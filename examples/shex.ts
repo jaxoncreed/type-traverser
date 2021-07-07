@@ -27,7 +27,7 @@ import {
   Wildcard,
 } from "shexj";
 
-const friendNetworkTraverser = universalTraverserFactory<
+const shexJTraverser = universalTraverserFactory<
   {
     Schema: {
       kind: "interface";
@@ -485,83 +485,9 @@ const friendNetworkTraverser = universalTraverserFactory<
   },
 });
 
-// const friendNetworkToStringTransformer = friendNetworkTraverser({
-//   FriendlyPerson: {
-//     transformer: async (
-//       originalData: FriendlyPerson,
-//       transformed: {
-//         bestFriend: string;
-//         friends: string;
-//       }
-//     ): Promise<string> => {
-//       return `FriendlyPerson-${originalData.name}(${transformed.bestFriend}, ${transformed.friends})`;
-//     },
-//     properties: {
-//       bestFriend: async (
-//         originalData: Person,
-//         transformed: string
-//       ): Promise<string> => {
-//         return `bestFriend(${transformed})`;
-//       },
-//       friends: async (
-//         originalData: Person[],
-//         transformed: string[]
-//       ): Promise<string> => {
-//         return `friends(${transformed.join(", ")})`;
-//       },
-//     },
-//   },
-//   WorkingPerson: {
-//     transformer: async (
-//       originalData: WorkingPerson,
-//       transformed: {
-//         coworkers: string;
-//       }
-//     ): Promise<string> => {
-//       return `WorkingPerson-${originalData.name}(${transformed.coworkers})`;
-//     },
-//     properties: {
-//       coworkers: async (
-//         originalData: WorkingPerson[],
-//         transformed: string[]
-//       ): Promise<string> => {
-//         return `coworkers(${transformed.join(",")})`;
-//       },
-//     },
-//   },
-//   Person: {
-//     transformer: async (
-//       originalData: Person,
-//       transformed: string
-//     ): Promise<string> => {
-//       return `Person(${transformed})`;
-//     },
-//   },
+// const shexJToStringTransformer = shexJTraverser({
+  
 // });
-
-// const SampleData: Person = {
-//   type: "FriendlyPerson",
-//   name: "Alice",
-//   bestFriend: {
-//     type: "FriendlyPerson",
-//     name: "Bob",
-//     friends: [],
-//   },
-//   friends: [
-//     {
-//       type: "WorkingPerson",
-//       name: "Charlie",
-//       occupations: ["Influencer"],
-//       coworkers: [
-//         {
-//           type: "WorkingPerson",
-//           name: "David",
-//           occupations: [],
-//         },
-//       ],
-//     },
-//   ],
-// };
 
 // friendNetworkToStringTransformer(SampleData, "Person").then((result: string) => {
 //   console.log(result);
