@@ -1,4 +1,5 @@
 import traverserFactory from "./traversers/traverserFactory";
+import { TraverserConfig } from "./traversers/traverserTypes";
 import {
   BaseTypeConfigs,
   BaseReturnConfigs,
@@ -6,10 +7,9 @@ import {
   TraverserConfigs,
   UniversalTraverser,
   Traversers,
-  TraverserConfig,
   Traverser,
   TransformerConfigs,
-  UniversalTransformer
+  UniversalTransformer,
 } from "./types";
 
 /**
@@ -39,8 +39,8 @@ export function universalTraverserFactory<
       ] => {
         return [
           traverserKey,
-          traverserFactory(traverserConfig, traverserKey, getTraversers)
-        ]
+          traverserFactory(traverserConfig, traverserKey, getTraversers),
+        ];
       }
     )
   );

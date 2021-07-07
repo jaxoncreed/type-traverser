@@ -2,11 +2,11 @@ import {
   BaseReturnConfigs,
   BaseTypeConfigs,
   Traverser,
-  TraverserConfig,
   Traversers,
 } from "../types";
-import interfaceTraverserFactory from "./interfaceTraverserFactory";
-import unionTraverserFactory from "./unionTraverserFactory";
+import { TraverserConfig } from "./traverserTypes";
+import interfaceTraverserFactory from "./interface/interfaceTraverserFactory";
+import unionTraverserFactory from "./union/unionTraverserFactory";
 
 export default function traverserFactory<
   TypeConfigs extends BaseTypeConfigs,
@@ -19,8 +19,16 @@ export default function traverserFactory<
 ): Traverser<TypeConfigs, ReturnConfigs, TypeKey> {
   switch (traverserConfig.kind) {
     case "interface":
-      return interfaceTraverserFactory(traverserConfig, traverserKey, getTraversers);
+      return interfaceTraverserFactory(
+        traverserConfig,
+        traverserKey,
+        getTraversers
+      );
     case "union":
-      return unionTraverserFactory(traverserConfig, traverserKey, getTraversers);
+      return unionTraverserFactory(
+        traverserConfig,
+        traverserKey,
+        getTraversers
+      );
   }
 }

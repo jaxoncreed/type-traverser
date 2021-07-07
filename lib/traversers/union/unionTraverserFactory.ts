@@ -3,8 +3,8 @@ import {
   BaseTypeConfigs,
   Traverser,
   Traversers,
-  UnionTraverserConfig,
-} from "../types";
+} from "../../types";
+import { UnionTraverserConfig } from "./unionTraverserTypes";
 
 export default function unionTraverserFactory<
   TypeConfigs extends BaseTypeConfigs,
@@ -15,10 +15,7 @@ export default function unionTraverserFactory<
   traverserKey: keyof TypeConfigs,
   getTraversers: () => Traversers<TypeConfigs, ReturnConfigs>
 ): Traverser<TypeConfigs, ReturnConfigs, TypeKey> {
-  return async (
-    originalData: any,
-    transformerConfigs: any
-  ): Promise<any> => {
+  return async (originalData: any, transformerConfigs: any): Promise<any> => {
     const specificTypeTraverserKey = await traverserConfig.detectType(
       originalData
     );

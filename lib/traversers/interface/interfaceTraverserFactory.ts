@@ -1,10 +1,10 @@
 import {
   BaseReturnConfigs,
   BaseTypeConfigs,
-  InterfaceTraverserConfig,
   Traverser,
   Traversers,
-} from "../types";
+} from "../../types";
+import { InterfaceTraverserConfig } from "./interfaceTraverserTypes";
 
 export default function interfaceTraverserFactory<
   TypeConfigs extends BaseTypeConfigs,
